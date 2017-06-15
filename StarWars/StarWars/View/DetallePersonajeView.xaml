@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="StarWars.View.DetallePersonajeView"
+             Title="{Binding Title}">
+    <ScrollView>
+        <StackLayout Padding="15" Spacing="10">
+            <Image Source="{Binding Personaje.FotoUrl}" />
+            <StackLayout>
+                <Label Text="Bio:" TextColor="Gray"/>
+                <Label Text="{Binding Personaje.Bio}" TextColor="Gray"/>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal">
+                <Label Text="Genero: " TextColor="Green" />
+                <Label Text="{Binding Personaje.Genero}" TextColor="Green"/>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal">
+                <Label Text="Altura: " TextColor="Red"/>
+                <Label Text="{Binding Personaje.Altura}" TextColor="Red"/>
+            </StackLayout>
+            <StackLayout>
+                <Label TextColor="Black">Películas:</Label>
+                <ListView x:Name="lsvPeliculas"
+                          ItemsSource="{Binding Personaje.Peliculas}"
+						  BackgroundColor="Transparent"
+                          RowHeight="20">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <StackLayout Padding="10,0,0,0">
+                                    <Label Text="{Binding Titulo}" TextColor="Brown" />
+                                </StackLayout>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </StackLayout>
+            <StackLayout>
+                <Label TextColor="Black">Armas:</Label>
+                <ListView x:Name="lsvArmas"
+                          ItemsSource="{Binding Personaje.Armas}"
+						  BackgroundColor="Transparent"
+                          RowHeight="20">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <StackLayout Padding="10,0,0,0">
+                                    <Label Text="{Binding Nombre}" TextColor="Chocolate" />
+                                </StackLayout>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </StackLayout>
+        </StackLayout>
+    </ScrollView>    
+</ContentPage>

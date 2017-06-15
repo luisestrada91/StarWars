@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="StarWars.View.ListaPersonajesView"
+             Title="Lista de Personajes">
+
+    <Grid RowSpacing="0" >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="50" />
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Entry x:Name="txtPagina" Text="{Binding Pagina, Mode=TwoWay}" Grid.Row="1"/>
+
+        <ListView x:Name="lsvPersonajes"
+                ItemsSource="{Binding Personajes}"
+                RefreshCommand="{Binding CargarPersonajesCommand}"
+                IsRefreshing="{Binding IsBusy, Mode=OneWay}"
+                ItemSelected="lsvPersonajes_ItemSelected"
+                IsPullToRefreshEnabled="True"
+                HasUnevenRows="true"
+				Grid.Row="2">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout HorizontalOptions="Start" Padding="10" >
+                            <Label Text="{Binding Nombre}" TextColor="Blue" FontAttributes="Bold" />
+                            <Image Source="{Binding FotoUrl}" WidthRequest="80" HeightRequest="80"/>
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="{Binding Genero}" TextColor="Green" />
+                                <Label Text="{Binding Altura}" TextColor="Red"  />
+                            </StackLayout>
+                            <Label Text="{Binding Bio}" TextColor="Gray" />
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </Grid>
+</ContentPage>

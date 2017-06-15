@@ -13,7 +13,7 @@ namespace StarWars
         {
             InitializeComponent();
 
-            MainPage = new StarWars.MainPage();
+            MainPage = new NavigationPage(new View.ListaPersonajesView());
         }
 
         protected override void OnStart()
